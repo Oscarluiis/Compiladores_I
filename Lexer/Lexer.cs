@@ -31,6 +31,7 @@ namespace Compi_Project.Lexer
                 if (char.IsWhiteSpace (currentChar) || currentChar == '\n')
                 {
                     currentChar = this.GetNextChar();
+                    continue;
                 }
 
                 if (char.IsLetter(currentChar))
@@ -52,6 +53,144 @@ namespace Compi_Project.Lexer
 
                     return BuildToken(tokenLexeme, TokenType.Identifier);
                 }
+
+                else if (char.IsDigit(currentChar))
+                {
+                    lexeme.Append(currentChar);
+                    currentChar = PeekNextChar();
+                    while (char.IsDigit(currentChar))
+                    {
+                        currentChar = GetNextChar();
+                        lexeme.Append(currentChar);
+                        currentChar = PeekNextChar();
+                    }
+
+                    if (currentChar == '.')
+                    {
+                        currentChar = GetNextChar();
+                        lexeme.Append(currentChar);
+                        currentChar = PeekNextChar();
+                        while (char.IsDigit(currentChar))
+                        {
+                            currentChar = GetNextChar();
+                            lexeme.Append(currentChar);
+                            currentChar = PeekNextChar();
+                        }
+                    }
+
+                    return BuildToken(lexeme.ToString(), TokenType.Number);
+                }
+
+                switch (currentChar)
+                {
+                    case '\0':
+                        return BuildToken("\0", TokenType.OpEOF);
+                    case '+':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpPlus);
+                    case '-':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpMinus);
+                    case '*':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpMul);
+                    case '/':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpDiv);
+                    case '<':
+                        lexeme.Append(currentChar);
+                        var nextChar = this.PeekNextChar();
+                        if (nextChar == '=')
+                        {
+                            currentChar = this.GetNextChar();
+                            lexeme.Append(currentChar);
+                            return BuildToken(lexeme.ToString(), TokenType.OpLessOrEqualThan);
+                        }
+                        return BuildToken(lexeme.ToString(), TokenType.OpLessThan);
+                    case '>':
+                        lexeme.Append(currentChar);
+                        nextChar = this.PeekNextChar();
+                        if (nextChar == '=')
+                        {
+                            currentChar = this.GetNextChar();
+                            lexeme.Append(currentChar);
+                            return BuildToken(lexeme.ToString(), TokenType.OpGreaterOrEqualThan);
+                        }
+                        return BuildToken(lexeme.ToString(), TokenType.OpGreaterThan);
+                    case ':':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpColon);
+                    case ';':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpSemicolon);
+                    case '(':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpLeftParens);
+                    case ')':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpRightParens);
+                    case '[':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpLeftBracket);
+                    case ']':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpRightBracket);
+                    case '{':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpLeftBrace);
+                    case '}':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpRightBrace);
+                    case ',':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpComma);
+                    case '=':
+                        lexeme.Append(currentChar);
+                        nextChar = this.PeekNextChar();
+                        if (nextChar == '=')
+                        {
+                            currentChar = this.GetNextChar();
+                            lexeme.Append(currentChar);
+                            return BuildToken(lexeme.ToString(), TokenType.OpEqual);
+                        }
+                        return BuildToken(lexeme.ToString(), TokenType.OpAssignation);
+                    case '\'':
+                        lexeme.Append(currentChar);
+                        currentChar = GetNextChar();
+                        while (currentChar != '\'')
+                        {
+                            lexeme.Append(currentChar);
+                            currentChar = GetNextChar();
+                        }
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpStringLiteral);
+
+                    case '&':
+                        lexeme.Append(currentChar);
+                        currentChar = GetNextChar();
+                        if (currentChar == '&')
+                        {
+                            lexeme.Append(currentChar);
+                            return BuildToken(lexeme.ToString(), TokenType.OpLogicalAnd);
+                        }
+                        lexeme.Clear();
+                        logger.Error($"Expected & but {currentChar} was found, line ine: {this.input.Position.Line} and column: {this.input.Position.Column}");
+                        continue;
+                    case '|':
+                        lexeme.Append(currentChar);
+                        currentChar = GetNextChar();
+                        if (currentChar == '|')
+                        {
+                            lexeme.Append(currentChar);
+                            return BuildToken(lexeme.ToString(), TokenType.OpLogicalOr);
+                        }
+                        lexeme.Clear();
+                        logger.Error($"Expected | but {currentChar} was found, line ine: {this.input.Position.Line} and column: {this.input.Position.Column}");
+                        continue;
+                    default:
+                        break;
+                }
+
 
             }
 
