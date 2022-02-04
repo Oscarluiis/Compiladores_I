@@ -1,6 +1,0 @@
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/bin/Debug/Compi_Project.exe
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/bin/Debug/Compi_Project.pdb
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/obj/Debug/Compi_Project.csproj.AssemblyReference.cache
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/obj/Debug/Compi_Project.csproj.CoreCompileInputs.cache
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/obj/Debug/Compi_Project.exe
-/Users/oscarluiis/Documents/Compiladores I/Proyecto/Compi_Project/Compi_Project/obj/Debug/Compi_Project.pdb
