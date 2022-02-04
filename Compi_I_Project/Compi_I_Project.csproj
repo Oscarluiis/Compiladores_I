@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
+    <ProjectGuid>{27F4EDE4-444D-4702-AF52-8950A7B4C528}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Compi_I_Project</RootNamespace>
+    <AssemblyName>Compi_I_Project</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|anycpu' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <IntermediateOutputPath>obj\anycpu\Debug</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|anycpu' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <IntermediateOutputPath>obj\anycpu\Release</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compi_I_Project.Core\Compi_I_Project.Core.csproj">
+      <Project>{E82FBA94-61D4-4F81-A259-DF52A6E958C1}</Project>
+      <Name>Compi_I_Project.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Compi_I_Project.Infrastructure\Compi_I_Project.Infrastructure.csproj">
+      <Project>{DA18F98C-32FF-4D47-A3F2-94BB3A55B8AC}</Project>
+      <Name>Compi_I_Project.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Compi_I_Project.Lexer\Compi_I_Project.Lexer.csproj">
+      <Project>{842BC8D8-D5A1-4A6A-A34C-33550E30EAE0}</Project>
+      <Name>Compi_I_Project.Lexer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

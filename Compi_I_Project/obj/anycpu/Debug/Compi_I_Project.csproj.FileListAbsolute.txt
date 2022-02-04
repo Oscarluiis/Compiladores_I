@@ -1,0 +1,13 @@
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.exe
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.pdb
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Core.dll
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Infrastructure.dll
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Lexer.dll
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Core.pdb
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Infrastructure.pdb
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/bin/Debug/Compi_I_Project.Lexer.pdb
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/obj/anycpu/Debug/Compi_I_Project.csproj.AssemblyReference.cache
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/obj/anycpu/Debug/Compi_I_Project.csproj.CoreCompileInputs.cache
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/obj/anycpu/Debug/Compi_I_Project.csproj.CopyComplete
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/obj/anycpu/Debug/Compi_I_Project.exe
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project/obj/anycpu/Debug/Compi_I_Project.pdb

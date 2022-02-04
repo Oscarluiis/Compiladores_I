@@ -10,6 +10,7 @@ namespace Compi_I_Project.Core.Models
             KwIf,
             KwElse,
             KwFor,
+            KwWhile,
             KwIn,
             KwdDo,
             KwPuts,

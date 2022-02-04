@@ -12,13 +12,23 @@ namespace Compi_I_Project.Lexer
         private readonly ILogger logger;
         private readonly Dictionary<string, TokenType> keywords;
 
-
-
         public Scanner(Input input, ILogger logger)
         {
             this.logger = logger;
             this.input = input;
+            this.keywords = getKeywords();
+        }
 
+        private Dictionary<string, TokenType> getKeywords() {
+            return new Dictionary<string, TokenType>
+            {
+                ["if"] = TokenType.KwIf,
+                ["else"] = TokenType.KwElse,
+                ["for"] = TokenType.KwFor,
+                ["while"] = TokenType.KwWhile,
+                ["end"] = TokenType.KwEnd,
+                //Poner mas palabras reservadas...
+            };
         }
 
         public Token GetNextToken()
@@ -28,6 +38,7 @@ namespace Compi_I_Project.Lexer
 
             while (currentChar != '\0')
             {
+
                 if (char.IsWhiteSpace(currentChar) || currentChar == '\n')
                 {
                     currentChar = this.GetNextChar();
@@ -188,15 +199,17 @@ namespace Compi_I_Project.Lexer
                         logger.Error($"Expected | but {currentChar} was found, line ine: {this.input.Position.Line} and column: {this.input.Position.Column}");
                         continue;
                     default:
+                        logger.Error($"Invalid token '{currentChar}' was found, line ine: {this.input.Position.Line} and column: {this.input.Position.Column}");
+                        return BuildToken(lexeme.ToString(), TokenType.Unknown);
                         break;
                 }
-
+                //Keywords
 
             }
 
             return new Token
             {
-                TokenType = TokenType.Unknown,
+                TokenType = TokenType.OpEOF,
                 Lexeme = lexeme.ToString(),
                 Column = this.input.Position.Column,
                 Line = this.input.Position.Line
