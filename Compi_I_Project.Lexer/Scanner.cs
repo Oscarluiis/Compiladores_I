@@ -28,6 +28,35 @@ namespace Compi_I_Project.Lexer
                 ["while"] = TokenType.KwWhile,
                 ["end"] = TokenType.KwEnd,
                 //Poner mas palabras reservadas...
+                ["in"] = TokenType.KwIn,
+                ["do"] = TokenType.KwdDo,
+                ["module"] = TokenType.KwModule,
+                ["elsif"] = TokenType.KwElsif,
+                ["next"] = TokenType.KwNext,
+                ["alias"] = TokenType.KwAlias,
+                ["nil"] = TokenType.kwNil,
+                ["false"] = TokenType.KwFalse,
+                ["super"] = TokenType.KwSuper,
+                ["not"] = TokenType.KwNot,
+                ["ensure"] = TokenType.KwEnsure,
+                ["then"] = TokenType.KwThen,
+                ["or"] = TokenType.OpLogicalOr,
+                ["and"] = TokenType.OpLogicalAnd,
+                ["until"] = TokenType.KwUntil,
+                ["break"] = TokenType.KwBreak,
+                ["when"] = TokenType.KwWhen,
+                ["case"] = TokenType.KwCase,
+                ["rescue"] = TokenType.KwRescue,
+                ["true"] = TokenType.KwTrue,
+                ["class"] = TokenType.KwClass,
+                ["retry"] = TokenType.KwRetry,
+                ["undef"] = TokenType.KwUndef,
+                ["defined?"] = TokenType.KwUndef,
+                ["def"] = TokenType.KwDef,
+                ["return"] = TokenType.KwReturn,
+                ["unless"] = TokenType.KwUnless,
+                ["self"] = TokenType.KwSelf,
+                ["puts"] = TokenType.KwPuts
             };
         }
 
@@ -108,6 +137,9 @@ namespace Compi_I_Project.Lexer
                     case '/':
                         lexeme.Append(currentChar);
                         return BuildToken(lexeme.ToString(), TokenType.OpDiv);
+                    case '%':
+                        lexeme.Append(currentChar);
+                        return BuildToken(lexeme.ToString(), TokenType.OpMod);
                     case '<':
                         lexeme.Append(currentChar);
                         var nextChar = this.PeekNextChar();
@@ -201,10 +233,7 @@ namespace Compi_I_Project.Lexer
                     default:
                         logger.Error($"Invalid token '{currentChar}' was found, line ine: {this.input.Position.Line} and column: {this.input.Position.Column}");
                         return BuildToken(lexeme.ToString(), TokenType.Unknown);
-                        break;
                 }
-                //Keywords
-
             }
 
             return new Token

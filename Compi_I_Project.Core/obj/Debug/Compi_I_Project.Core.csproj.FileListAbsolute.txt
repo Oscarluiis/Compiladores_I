@@ -3,3 +3,4 @@
 /Users/oscarluiis/Projects/Compi_Project/Compi_I_Project.Core/obj/Debug/Compi_I_Project.Core.csproj.CoreCompileInputs.cache
 /Users/oscarluiis/Projects/Compi_Project/Compi_I_Project.Core/obj/Debug/Compi_I_Project.Core.dll
 /Users/oscarluiis/Projects/Compi_Project/Compi_I_Project.Core/obj/Debug/Compi_I_Project.Core.pdb
+/Users/oscarluiis/Projects/Compi_Project/Compi_I_Project.Core/obj/Debug/Compi_I_Project.Core.csproj.AssemblyReference.cache
